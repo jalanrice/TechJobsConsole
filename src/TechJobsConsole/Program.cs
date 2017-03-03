@@ -121,14 +121,19 @@ namespace TechJobsConsole
         private static void PrintJobs(List<Dictionary<string, string>> someJobs)
         {
             StringBuilder jobDescription = new StringBuilder();
-            foreach (Dictionary<string, string> job in someJobs)
-            {
-                jobDescription.Append("*****\n");
-                foreach (KeyValuePair<string, string> field in job)
+            if (someJobs.Count!= 0)
+                foreach (Dictionary<string, string> job in someJobs)
                 {
-                    jobDescription.Append(field.Key + ": " + field.Value + "\n");
+                    jobDescription.Append("*****\n");
+                    foreach (KeyValuePair<string, string> field in job)
+                    {
+                        jobDescription.Append(field.Key + ": " + field.Value + "\n");
+                    }
+                    jobDescription.Append("*****\n");
                 }
-                jobDescription.Append("*****\n");
+            else
+            {
+                jobDescription.Append("*****\nNo jobs matching criteria found.\n*****");
             }                     
                 
 

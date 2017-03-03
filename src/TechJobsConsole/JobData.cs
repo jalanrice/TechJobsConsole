@@ -2,6 +2,7 @@
 using System.IO;
 using System.Reflection;
 using System.Text;
+using System.Linq;
 
 namespace TechJobsConsole
 {
@@ -49,7 +50,7 @@ namespace TechJobsConsole
             {
                 string aValue = row[column];
 
-                if (aValue.Contains(value))
+                if (aValue.ToUpper().Contains(value.ToUpper()))
                 {
                     jobs.Add(row);
                 }
@@ -66,8 +67,10 @@ namespace TechJobsConsole
             List<Dictionary<string, string>> jobs = new List<Dictionary<string, string>>();
 
             foreach (Dictionary<string, string> row in AllJobs)
-            {               
-                if (row.ContainsKey(search) || row.ContainsValue(search))
+            {
+                string rowString;
+                rowString = string.Join(" ", row.Select(KeyValuePair => string.Join(" ", KeyValuePair.Key, KeyValuePair.Value)));                
+                if(rowString.ToUpper().Contains(search.ToUpper()))
                 {
                     jobs.Add(row);
                 }
