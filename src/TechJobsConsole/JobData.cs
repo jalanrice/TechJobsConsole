@@ -14,7 +14,12 @@ namespace TechJobsConsole
         public static List<Dictionary<string, string>> FindAll()
         {
             LoadData();
-            return AllJobs;
+            List<Dictionary<string, string>> allJobsClone = new List<Dictionary<string, string>>();
+            foreach (Dictionary<string, string> job in AllJobs)
+            {
+                allJobsClone.Add(job);
+            }
+            return allJobsClone;
         }
 
         /*
